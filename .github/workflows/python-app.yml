@@ -43,6 +43,7 @@ jobs:
           aws s3 ls s3://${{ env.EB_S3_BUCKET_NAME }}
 
   cd:
+    needs: ci
     runs-on: ubuntu-latest
 
     steps:

@@ -1,0 +1,29 @@
+name: ci-cd-to-aws-elasticbeanstalk
+env:
+  EB_S3_BUCKET_NAME: "devops-project4"
+  EB_APP_NAME: "fastapi-demo"
+  EB_ENV_NAME: "fastapi-demo-env"
+  DEPLOY_PACKAGE_NAME: "fastapi-demo-${{ github.sha }}.zip"
+  AWS_REGION_NAME: "eu-central-1"
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: clone git repo
+      uses: actions/checkout@v3
+
+    - name: Install zip package
+      run: |
+        sudo apt update
+        sudo apt install zip -y
+        zip --version
+        
+    - name: create ZIP deployment package
+      run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
+

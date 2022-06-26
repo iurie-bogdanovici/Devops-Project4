@@ -2,7 +2,7 @@ name: ci-cd-to-aws-elasticbeanstalk
 env:
   EB_S3_BUCKET_NAME: "devops-project4"
   EB_APP_NAME: "fastapi-demo-app"
-  EB_ENV_NAME: "fastapi-demo-env"
+  EB_ENV_NAME: "Fastapidemoapp-env"
   DEPLOY_PACKAGE_NAME: "fastapi-demo-${{ github.sha }}.zip"
   AWS_REGION_NAME: "eu-central-1"
 

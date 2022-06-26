@@ -18,7 +18,7 @@ jobs:
     - name: clone git repo
       uses: actions/checkout@v3
 
-    - name: Install zip package
+    - name: install zip package
       run: |
         sudo apt update
         sudo apt install zip -y
@@ -26,4 +26,3 @@ jobs:
         
     - name: create ZIP deployment package
       run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
-
